@@ -1,0 +1,26 @@
+[package]
+name = "visiotest"
+version = "0.1.0"
+edition = "2024"
+description = "Live webcam → detect → track → events pipeline in Rust, with an honest per-stage latency budget"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/martinserts/visiotest"
+# A learning project, not a library: never published to crates.io.
+publish = false
+
+[dependencies]
+anyhow = "1.0.104"
+bytemuck = { version = "1.25.2", features = ["derive"] }
+clap = { version = "4.6.7", features = ["derive"] }
+# "clipboard": the Latency page's Copy button (eframe's defaults are off).
+eframe = { version = "0.37.0", default-features = false, features = ["wgpu", "default_fonts", "clipboard"] }
+# Only to turn on egui's emoji fonts, which eframe has no feature for: the card's ✏ and 🗑.
+egui = { version = "0.37.0", default-features = false, features = ["monochrome_emoji_fonts"] }
+nokhwa = { version = "0.10.11", features = ["input-native", "output-threaded"] }
+# ONNX Runtime. No ndarray: tensors are built from (shape, &[f32]).
+# Pinned exactly: it's a release candidate, and its API moves between rcs.
+ort = { version = "=2.0.0-rc.14", default-features = false, features = ["std", "download-binaries", "tls-native", "copy-dylibs", "api-31", "coreml"] }
+# rules.json and the JSON event lines. Geometry and the event logic are hand-written.
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"

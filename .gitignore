@@ -1,0 +1,23 @@
+# Rust build output
+/target
+**/*.rs.bk
+
+# The exported model and the Ultralytics weights (AGPL-3.0; made by model-export/)
+/models/
+*.pt
+*.onnx
+
+# Python
+.venv/
+__pycache__/
+
+# Lines and zones drawn in the window; per machine and camera.
+rules.json
+rules.json.tmp
+
+# Local working notes and tool state
+CLAUDE.md
+temp/
+.superpowers/
+.claude/
+.DS_Store
